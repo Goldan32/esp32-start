@@ -11,3 +11,9 @@ Generate an example project
 ```
 cargo generate esp-rs/esp-template
 ```
+
+Flash
+
+```
+espflash flash --list-all-ports <elf>
+```

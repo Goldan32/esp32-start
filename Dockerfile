@@ -27,4 +27,6 @@ RUN apt update \
 RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
+RUN usermod -aG dialout esp
+
 USER esp
