@@ -1,2 +1,14 @@
 source ~/export-esp.sh
+
+TARGET_NAME=""
+ESPFLASH_PORT=""
+
+function flash-image() {
+    if [ -z ${ESPFLASH_PORT} ]; then
+        espflash flash --list-all-ports ~/project/target/xtensa-esp32-none-elf/debug/$TARGET_NAME
+    else
+        espflash flash ~/project/target/xtensa-esp32-none-elf/debug/$TARGET_NAME
+    fi
+}
+
 cd project
