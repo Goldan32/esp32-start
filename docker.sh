@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Figure out current folder and climb up
 CURRENT_DIR="$(pwd)"
