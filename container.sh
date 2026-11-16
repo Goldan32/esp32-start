@@ -15,9 +15,7 @@ else echo "error: neither podman nor docker found" >&2; exit 1; fi
 # Override with ESP_PROJECT_DIR.
 find_project() {
   local d="${ESP_PROJECT_DIR:-}"
-  [[ -n "$d" ]] || d="$(git rev-parse --show-superproject-working-tree 2>/dev/null || true)"
-  [[ -n "$d" ]] || d="$(git rev-parse --show-toplevel 2>/dev/null || true)"
-  [[ -n "$d" ]] || d="$PWD"
+  [[ -n "$d" ]] || d="${SCRIPT_DIR}/.."
   printf '%s' "$d"
 }
 PROJECT_DIR="$(find_project)"
