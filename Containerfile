@@ -45,6 +45,9 @@ RUN printf '#!/bin/bash\n. /opt/export-esp.sh\nexec "$@"\n' > /usr/local/bin/esp
 RUN getent group "${USER_GID}" >/dev/null || groupadd -g "${USER_GID}" "${USERNAME}"; \
     useradd -m -u "${USER_UID}" -g "${USER_GID}" -s /bin/bash "${USERNAME}"
 
+RUN rustup component add rust-analyzer --toolchain stable \
+ && ln -s "$(rustup which --toolchain stable rust-analyzer)" /usr/local/bin/rust-analyzer
+
 USER ${USERNAME}
 
 ENTRYPOINT ["/usr/local/bin/esp-env"]

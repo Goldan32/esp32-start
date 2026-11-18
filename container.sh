@@ -55,7 +55,7 @@ cmd_up() {
   "$ENGINE" run -d --name "$NAME" --stop-timeout 2 "${user_args[@]}" \
     -e HOME=/tmp -e CARGO_HOME=/cache/cargo \
     -v "$CARGO_CACHE":/cache/cargo:Z \
-    -v "$PROJECT_DIR":/work:Z -w /work \
+    -v "$PROJECT_DIR":"$PROJECT_DIR":Z -w "$PROJECT_DIR" \
     "$IMAGE" sleep infinity >/dev/null
   echo "started $NAME (project: $PROJECT_DIR)" >&2
 }
